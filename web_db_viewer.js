@@ -213,7 +213,7 @@ app.get('/api/data', async (req, res) => {
         if (Object.keys(where).length > 0) {
             data = await prisma[table].findMany({
                 where: where,
-                take: 100,
+                take: 1000,
                 orderBy: orderBy.length > 0 ? orderBy : undefined
             });
         }
@@ -223,7 +223,7 @@ app.get('/api/data', async (req, res) => {
             isFallback = true;
             data = await prisma[table].findMany({
                 where: {},
-                take: 100, // 데이터 확인용 100건 표시
+                take: 1000, // 데이터 확인용 1000건 표시
                 orderBy: orderBy.length > 0 ? orderBy : undefined
             });
             searchDebugMsg = "조건 없음 (전체 최신순 10건)";
